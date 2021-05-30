@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => res.json({ hello: 'world' }));
 app.use('/api/auth', routes.auth);
 app.use('/api/polls', routes.poll);
+app.use('/api/review', routes.review);
 
 app.use(handle.notFound);
 app.use(handle.errors);

@@ -24,7 +24,8 @@ const userSchema = new mongoose.Schema({
     type: 'string',
     required: true,
   },
-  polls: [{type: mongoose.Schema.Types.ObjectId, ref: 'Poll'}]
+  polls: [{type: mongoose.Schema.Types.ObjectId, ref: 'Poll'}],
+  review: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
 });
 
 userSchema.pre('save', async function (next) {
