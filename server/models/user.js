@@ -15,15 +15,6 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  mail: {
-    type: 'string',
-    required: true,
-    unique: true
-  },
-  name: {
-    type: 'string',
-    required: true,
-  },
   polls: [{type: mongoose.Schema.Types.ObjectId, ref: 'Poll'}],
   review: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
 });

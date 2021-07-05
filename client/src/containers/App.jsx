@@ -3,6 +3,8 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 import { setCurrentUser, addError, setToken } from '../store/actions';
 import decode from 'jwt-decode';
+import Auth from '../components/auth'
+import ErrorMessage from '../components/ErrorMessage';
 
 if (localStorage.jwt) {
   setToken(localStorage.jwt);
@@ -15,7 +17,8 @@ if (localStorage.jwt) {
 }
 
 const App = () => <Provider store={store}>
-  <div>asdasdasd</div>
+  <Auth authType={'login'} />
+  <ErrorMessage />
 </Provider>
 
 export default App;
