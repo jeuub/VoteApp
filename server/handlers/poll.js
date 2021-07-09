@@ -95,7 +95,7 @@ exports.vote = async (req, res, next) => {
 
       const vote = poll.options.map(
         option => {
-          if(option.option === answer){
+          if(option.option == answer){
             return {option: option.option, 
             _id: option._id,
             votes: option.votes +1

@@ -1,0 +1,488 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,500&display=swap");
+:root {
+  --main: #f1ede9;
+  --secondary: #000000;
+}
+
+/* fonts */
+/* Обнуляем стили */
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  background-color: var(--main);
+  font-family: "Alegreya", serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.header__logo {
+  font-family: "Alegreya", serif;
+  aspect-ratio: 1/1;
+  padding: 2px 5px 2px 2px;
+  border: 1px solid black;
+  line-height: 1rem;
+}
+.header__logo span {
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+.header__logout {
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  transition: 300ms;
+}
+.header__logout span {
+  display: none;
+}
+.header__logout:hover {
+  background-color: black;
+  color: white;
+}
+.header nav {
+  display: flex;
+}
+.header nav ul {
+  display: flex;
+  list-style-type: none;
+  padding-left: 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.header nav ul li {
+  padding: 5px 5px;
+}
+.header nav ul li span {
+  display: none;
+}
+.header nav ul li:hover a::after {
+  opacity: 1;
+  transition: 300ms;
+}
+.header nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+.header nav ul li a::after {
+  content: "+";
+  opacity: 0;
+}
+
+.landing__start {
+  display: flex;
+  flex-direction: column;
+}
+.landing__start__info__more {
+  margin-left: 20px;
+}
+.landing__start__info h1 {
+  text-align: center;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.landing__start__info div {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.landing__start__info div a {
+  width: 50%;
+  text-align: center;
+  max-width: 200px;
+  font-size: 0.8rem;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid black;
+  color: black;
+  text-decoration: none;
+  transition: 300ms;
+}
+.landing__start__info div a:hover {
+  background: black;
+  color: white;
+}
+
+section {
+  padding: 20px;
+  margin: 20px 0;
+  min-height: 80vh;
+}
+
+.landing__target {
+  scroll-behavior: smoth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landing__target__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.landing__target__content img {
+  width: 100%;
+}
+.landing__target__content p {
+  font-size: 1.125rem;
+}
+.landing__target h2 {
+  text-align: center;
+  font-size: 1.7rem;
+}
+.landing__target__img {
+  max-width: 600px;
+}
+
+.landing__team h2 {
+  text-align: center;
+  font-size: 1.7rem;
+}
+.landing__team__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.landing__team__content__img {
+  width: 100%;
+}
+.landing__team__content p {
+  text-align: center;
+  font-size: 1.125rem;
+}
+.landing__team__content p a i {
+  font-size: 2rem;
+  color: black;
+  margin: 2px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  transition: 300ms;
+}
+.landing__team__content p a i:hover {
+  color: #e85032;
+}
+.landing__team__content p a:last-child:hover i {
+  color: #2787f5;
+}
+
+.polls__title {
+  text-align: center;
+  padding: 10px 0;
+}
+.polls__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.polls__container__poll {
+  width: 100%;
+  border: 1px solid black;
+  padding: 5px 7px;
+  position: relative;
+  transition: 300ms;
+  max-width: 300px;
+}
+.polls__container__poll:before {
+  content: "перейти";
+  position: absolute;
+  color: white;
+  font-size: 1.4rem;
+  opacity: 0;
+  transition: 300ms;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.polls__container__poll:hover {
+  background-color: black;
+}
+.polls__container__poll:hover:before {
+  opacity: 1;
+}
+.polls__options {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.polls__options label {
+  text-align: center;
+  padding: 10px 20px;
+  border: 1px solid black;
+  transition: 300ms;
+}
+.polls__options input {
+  display: none;
+}
+.polls__options input:checked + label {
+  background-color: black;
+  color: white;
+}
+
+.poll__title {
+  text-align: center;
+}
+.poll__title__author {
+  text-align: right;
+  font-weight: 500;
+}
+.poll__content__answers {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+.poll__content__answers button {
+  width: 100%;
+  border: 1px solid black;
+  padding: 5px 10px;
+  transition: 300ms;
+  background: transparent;
+}
+.poll__content__answers button:hover {
+  color: white;
+  background-color: black;
+}
+
+.error {
+  margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px 10px;
+  color: white;
+  background-color: rgba(202, 33, 33, 0.52);
+}
+
+.create_poll {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+  gap: 10px;
+}
+.create_poll label {
+  display: flex;
+  flex-direction: column;
+}
+.create_poll label input {
+  border: none;
+  padding: 3px 10px;
+}
+.create_poll button {
+  background: transparent;
+  border: 1px solid black;
+  padding: 5px 7px;
+  transition: 300ms;
+}
+.create_poll button:hover {
+  background-color: black;
+  color: white;
+}
+
+.auth__form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.auth__form label input {
+  border: none;
+  padding: 3px 10px;
+  width: 100%;
+}
+.auth__form button {
+  background: transparent;
+  border: 1px solid black;
+  padding: 5px 7px;
+  transition: 300ms;
+}
+.auth__form button:hover {
+  background-color: black;
+  color: white;
+}
+
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 18px;
+  }
+
+  .header {
+    flex-direction: row;
+  }
+
+  .polls__options {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 769px) {
+  html {
+    font-size: 20px;
+  }
+
+  .header nav ul li a span {
+    display: inline;
+  }
+
+  .header__logout span {
+    display: inline;
+  }
+
+  .landing__start {
+    flex-direction: row;
+    align-items: center;
+  }
+  .landing__start__info {
+    width: 55%;
+  }
+  .landing__start__info div {
+    justify-content: flex-start;
+  }
+  .landing__start__info h1 {
+    text-align: left;
+  }
+
+  .landing__start__img {
+    width: 45%;
+    display: flex;
+  }
+
+  .landing__target__content {
+    flex-direction: row;
+  }
+  .landing__target__content img {
+    width: 50%;
+  }
+
+  .landing__team__content {
+    flex-direction: row;
+  }
+  .landing__team__content p {
+    width: 80%;
+    text-align: left;
+  }
+  .landing__team__content figure {
+    max-width: 400px;
+  }
+
+  .poll__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .poll__content__graph {
+    width: 40%;
+  }
+
+  .polls__container {
+    display: grid;
+    justify-items: center;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .polls__container__poll {
+    max-width: none;
+  }
+}
+@media screen and (min-width: 1025px) {
+  html {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1441px) {
+  html {
+    font-size: 22px;
+  }
+}/*# sourceMappingURL=style.css.map */
