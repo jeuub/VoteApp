@@ -1,11 +1,21 @@
-import React from 'react';
-import Elections5 from '../img/elections_05.svg'
-import Elections1 from '../img/elections_01.svg'
-import myAvatar from '../img/avatar.jpg'
+import React, { useEffect, useState } from 'react';
+import Elections5 from '../img/elections_05.svg';
+import Elections1 from '../img/elections_01.svg';
+import myAvatar from '../img/avatar.jpg';
+import { call } from '../services/api';
 
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
+  const [techs, setTechs] = useState([]);
+  const [version, setVersion] = useState([]);
+  useEffect(async () => {
+    let techsData = await call('get', 'techs')
+    setTechs(techsData);
+
+    let varsionsData = await call('get', 'version')
+    setVersion(varsionsData);
+  }, []);
   return (
     <main className="landing">
       <section className="landing__start">
@@ -50,7 +60,34 @@ const Landing = () => {
         </div>
       </section>
       <section className="landing__techs">
-        <h2>Используемые Технологии</h2>
+        <h2 className="landing__techs__title">Используемые Технологии</h2>
+        <div className="landing__techs__container">
+          {
+            techs.map((tech, idx) => {
+              return (
+                <div key={`tech ${idx}`} className="landing__techs__container__tech">
+                  <h3>{idx + 1}. {tech.title}</h3>
+                  <p>{tech.text}</p>
+                  <img src={tech.photo} alt={tech.title} />
+                </div>
+              )
+            })
+          }
+        </div>
+      </section>
+      <section className="landing__versions">
+        <h2 className="landing__versions__title">Обновления</h2>
+        <ul className="landing__versions__container">
+          {
+            version.map((version, idx) => {
+              return (
+                <li key={`version ${idx}`} className="landing__versions__container__version">
+                  Обновление №{idx + 1} <br /> {version.version} - {version.text}
+                </li>
+              )
+            })
+          }
+        </ul>
       </section>
     </main>
   )

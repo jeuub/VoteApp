@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { authUser, logout } from '../store/actions';
+import { call } from '../services/api';
 
 class Auth extends Component {
   constructor(props) {
@@ -16,15 +17,28 @@ class Auth extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   handleSubmit(e) {
+    e.preventDefault();
     const { username, password } = this.state;
     const { authType } = this.props;
-    e.preventDefault();
-    this.props.authUser(authType || 'login', { username, password });
+    if (this.props.authType !== 'admin') {
+      this.props.authUser(authType || 'login', { username, password });
+    } else {
+      async function getData(username, password) {
+        let data = await call('post', 'admin/login', { username: username, password: password }).then()
+        localStorage.setItem('adminToken', data.token)
+        localStorage.setItem('adminName', data.username)
+        localStorage.setItem('adminId', data.id)
+        setTimeout(location.reload(), 100)
+        return (data);
+      }
+      getData(username, password);
+    }
   }
+
   render() {
     const { username, password } = this.state;
     return <Fragment>
-      {this.props.authType == 'register'? <h1> Зарегистрируйтесь</h1>: <h1>Войдите в аккаунт</h1> }
+      {this.props.authType == 'register' ? <h1> Зарегистрируйтесь</h1> : <h1>Войдите в аккаунт</h1>}
       <form onSubmit={this.handleSubmit} className="auth__form">
         <label >
           Логин:

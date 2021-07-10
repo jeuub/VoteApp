@@ -20,8 +20,8 @@ class CreatePoll extends Component {
   addAnswer() {
     this.setState({ options: [...this.state.options, ''] });
   }
-  removeAnswer(){
-    let newOptions = this.state.options.splice( 0, this.state.options.length -1,  )
+  removeAnswer() {
+    let newOptions = this.state.options.splice(0, this.state.options.length - 1,)
     this.setState({ options: newOptions });
   }
   handleAnswer(e, index) {
@@ -33,6 +33,10 @@ class CreatePoll extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createPoll(this.state);
+    this.setState({ question: '' });
+    this.setState({ options: [''] });
+    document.querySelector('.create_poll__done').style.opacity = '1';
+    setTimeout(() =>document.querySelector('.create_poll__done')? document.querySelector('.create_poll__done').style.opacity = '0':null, 3000)
   }
   render() {
 
@@ -49,19 +53,22 @@ class CreatePoll extends Component {
       </Fragment>
     ));
     return (
-      <form className="create_poll" onSubmit={e => this.handleSubmit(e)}>
-        <label>Вопрос:
-          <input type="text"
-            name='question'
-            value={this.state.question}
-            onChange={this.handleChange}
-          />
-        </label>
-        {options}
-        <button type="button" onClick={this.removeAnswer}>Убрать вариант</button>
-        <button type="button" onClick={this.addAnswer}>Добавить вариант</button>
-        <button type="submit">Создать</button>
-      </form>
+      <Fragment>
+        <div class="create_poll__done">Готово!</div>
+        <form className="create_poll" onSubmit={e => this.handleSubmit(e)}>
+          <label>Вопрос:
+            <input type="text"
+              name='question'
+              value={this.state.question}
+              onChange={this.handleChange}
+            />
+          </label>
+          {options}
+          <button type="button" onClick={this.removeAnswer}>Убрать вариант</button>
+          <button type="button" onClick={this.addAnswer}>Добавить вариант</button>
+          <button type="submit">Создать</button>
+        </form>
+      </Fragment>
     )
   }
 }

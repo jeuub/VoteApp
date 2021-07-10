@@ -1,9 +1,10 @@
 const db = require('../models');
 const jwt = require('jsonwebtoken');
 
-exports.register = async (req, res, next) => {
+exports.registerAdmin = async (req, res, next) => {
+  console.log(req);
   try {
-    const user = await db.User.create(req.body);
+    const user = await db.Admin.create(req.body);
     const { id, username } = user;
 
     const token = jwt.sign({ id, username }, process.env.SECRET);
@@ -17,9 +18,9 @@ exports.register = async (req, res, next) => {
   }
 }
 
-exports.login = async (req, res, next) => {
+exports.loginAdmin = async (req, res, next) => {
   try {
-    const user = await db.User.findOne({ username: req.body.username });
+    const user = await db.Admin.findOne({ username: req.body.username });
     const { id, username } = user;
     const valid = await user.comparePassword(req.body.password);
 
@@ -39,14 +40,3 @@ exports.login = async (req, res, next) => {
 
   }
 };
-
-exports.changeName = async (req, res, next) => {
-  try {
-    
-    const user = await db.User.findOneAndUpdate({username: req.body.username}, {username: req.body.new}, {new: true});
-    res.json(user);
-  } catch (err) {
-    err.message = 'Ошибка при попытке изменить имя';
-    next(err)
-  }
-}

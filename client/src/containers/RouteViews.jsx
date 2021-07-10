@@ -8,6 +8,9 @@ import PollsPage from '../pages/PollsPage';
 import PollPage from '../pages/PollPage';
 import CreatePollPage from '../pages/CreatePollPage';
 import { getCurrentPoll } from '../store/actions';
+import ProfilePage from '../pages/ProfilePage';
+import AdminLogin from '../pages/AdminLogin';
+import AdminPanel from '../pages/AdminPanel';
 
 const RouteViews = ({ auth, getCurrentPoll }) =>
   <Fragment>
@@ -18,6 +21,9 @@ const RouteViews = ({ auth, getCurrentPoll }) =>
       <Route exact path="/" render={props => <PollsPage  {...props} />} />
       <Route exact path="/poll/:id" render={props => <PollPage getPoll={id => getCurrentPoll(id)} {...props} />} />
       <Route exact path="/create" render={()=> <CreatePollPage isAuthenticated={auth.isAuthenticated}/>} />
+      <Route exact path="/me" render={props=> <ProfilePage isAuthenticated={auth.isAuthenticated} name={auth.user.username} id={auth.user.id} {...props}/>} />
+      <Route exact path="/admin" render={props=> <AdminLogin {...props}/>} />
+      <Route exact path="/adminPanel" render={props=> <AdminPanel {...props}/>} />
     </Switch>
   </Fragment>;
 

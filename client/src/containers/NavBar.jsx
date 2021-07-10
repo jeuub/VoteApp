@@ -10,17 +10,17 @@ const NavBar = ({ auth, logout }) => <header className="header">
   <nav>
     <ul>
       <li>
-        <Link to="/landing"> <i className="fas fa-newspaper"></i> <span>Основная </span></Link>
+        <Link to="/landing"> <i className="fas fa-newspaper"></i> <span>Главная </span></Link>
       </li>
       <li>
         <Link to= "/"> <i className="fas fa-poll-h"></i> <span> Голосования </span></Link>
       </li>
-      {!auth.isAuthenticated ?
+      {!auth.isAuthenticated && !localStorage.getItem('adminToken') ?
         <li>
           <Link to="/register"> <i className="far fa-plus-square"></i> <span> Регистрация </span> </Link>
         </li> : null
       }
-      {!auth.isAuthenticated ?
+      {!auth.isAuthenticated && !localStorage.getItem('adminToken')?
         <li>
           <Link to="/login"><i className="fas fa-sign-in-alt"></i> <span> Войти </span> </Link>
         </li> : null
@@ -30,7 +30,12 @@ const NavBar = ({ auth, logout }) => <header className="header">
           <Link to="/create"> <i className="far fa-plus-square"></i> <span> Создать </span> </Link>
         </li> : null
       }
-      {auth.isAuthenticated ? <button className="header__logout" onClick={logout} > <i className="fas fa-door-closed"></i> <span> Выйти</span> </button> : null}
+      {auth.isAuthenticated ?
+        <li>
+          <Link to="/me"> <i className="far fa-grin-beam"></i> <span> Вы </span> </Link>
+        </li> : null
+      }
+      {auth.isAuthenticated || localStorage.getItem('adminToken') ? <button className="header__logout" onClick={logout} > <i className="fas fa-door-closed"></i> <span> Выйти</span> </button> : null}
     </ul>
   </nav>
 </header>

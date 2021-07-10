@@ -29,3 +29,13 @@ exports.createReview = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.deleteReview = async (req, res, next) => {
+  try{
+    const review = await db.Review.findOneAndRemove({_id:req.body.id});
+    res.status(200).json('deleted');
+  }catch(err) {
+    err.status = 400;
+    next(err);
+  }
+};

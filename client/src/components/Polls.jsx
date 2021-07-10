@@ -24,7 +24,7 @@ class Polls extends Component {
   };
   render() {
     const { auth, getPolls, getUserPolls } = this.props;
-    const polls = this.props.polls.map(poll => (<li className="polls__container__poll" onClick={() => this.handleSelect(poll._id)} key={poll._id}>{poll.question}<br/> <span>Автор: {poll.user.username}</span></li>))
+    const polls = this.props.polls.map(poll => (<li className="polls__container__poll" onClick={() => this.handleSelect(poll._id)} key={poll._id}>{poll.question}<br/> { poll.user.username?<span>Автор: {poll.user.username}</span>:null}</li>))
     return <Fragment>
       {auth.isAuthenticated && (
         <div className="polls__options">

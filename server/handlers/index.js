@@ -1,7 +1,10 @@
 module.exports = {
   ...require('./auth'),
   ...require('./poll'),
-  ...require('./review')
+  ...require('./review'),
+  ...require('./admin'),
+  ...require('./tech'),
+  ...require('./version'),
 };
 
 module.exports.notFound = (req, res, next) => {

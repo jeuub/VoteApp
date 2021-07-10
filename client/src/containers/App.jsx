@@ -8,6 +8,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RouteViews from './RouteViews';
 import NavBar from './NavBar';
+import PageFooter from './Footer';
 import '../styles/style.css';
 
 if (localStorage.jwt) {
@@ -25,6 +26,7 @@ const App = () => <Provider store={store}>
     <Fragment>
       <NavBar/> 
       <RouteViews/>
+      <PageFooter/>
     </Fragment>
   </Router>
 </Provider>
