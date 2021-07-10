@@ -25,7 +25,6 @@ const Landing = () => {
           </h1>
           <div>
             <Link to="/register">Регистрация</Link>
-            <a href="#info" className="landing__start__info__more">Больше...</a>
           </div>
         </div>
         <div className="landing__start__img">
