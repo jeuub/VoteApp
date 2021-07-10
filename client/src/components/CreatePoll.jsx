@@ -21,8 +21,10 @@ class CreatePoll extends Component {
     this.setState({ options: [...this.state.options, ''] });
   }
   removeAnswer() {
-    let newOptions = this.state.options.splice(0, this.state.options.length - 1,)
-    this.setState({ options: newOptions });
+    if (this.state.options.length > 2) {
+      let newOptions = this.state.options.splice(0, this.state.options.length - 1,)
+      this.setState({ options: newOptions });
+    }
   }
   handleAnswer(e, index) {
     const options = [...this.state.options];
@@ -36,7 +38,7 @@ class CreatePoll extends Component {
     this.setState({ question: '' });
     this.setState({ options: [''] });
     document.querySelector('.create_poll__done').style.opacity = '1';
-    setTimeout(() =>document.querySelector('.create_poll__done')? document.querySelector('.create_poll__done').style.opacity = '0':null, 3000)
+    setTimeout(() => document.querySelector('.create_poll__done') ? document.querySelector('.create_poll__done').style.opacity = '0' : null, 3000)
   }
   render() {
 
@@ -46,6 +48,7 @@ class CreatePoll extends Component {
           Вариант №{idx + 1}:
           <input
             type="text"
+            required
             value={options}
             onChange={e => this.handleAnswer(e, idx)}
           />
@@ -54,10 +57,10 @@ class CreatePoll extends Component {
     ));
     return (
       <Fragment>
-        <div class="create_poll__done">Готово!</div>
+        <div className="create_poll__done">Готово!</div>
         <form className="create_poll" onSubmit={e => this.handleSubmit(e)}>
           <label>Вопрос:
-            <input type="text"
+            <input type="text" required
               name='question'
               value={this.state.question}
               onChange={this.handleChange}

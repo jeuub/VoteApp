@@ -368,10 +368,17 @@ section {
     }
   }
 }
+.auth__title, .auth__link {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}
 .auth__form {
   display: flex;
   gap: 10px;
   flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
   & label{
     & input{
       border: none;

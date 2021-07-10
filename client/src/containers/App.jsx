@@ -1,11 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../store';
 import { setCurrentUser, addError, setToken } from '../store/actions';
 import decode from 'jwt-decode';
-import Auth from '../components/auth'
-import ErrorMessage from '../components/ErrorMessage';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import RouteViews from './RouteViews';
 import NavBar from './NavBar';
 import PageFooter from './Footer';

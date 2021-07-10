@@ -11,7 +11,9 @@ const AuthPage = ({ authType, isAuthenticated }) => {
     <section>
       <ErrorMessage />
       <Auth authType={authType} />
+      <div className="auth__link">
       <Link to="/admin">Панель администратора</Link>
+      </div>
     </section>
   )
 };

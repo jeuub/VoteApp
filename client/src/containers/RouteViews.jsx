@@ -15,9 +15,9 @@ import AdminPanel from '../pages/AdminPanel';
 const RouteViews = ({ auth, getCurrentPoll }) =>
   <Fragment>
     <Switch>
-      <Route exact path="/login" render={() => <AuthPage authType={'login'} isAuthenticated={auth.isAuthenticated} />} />
-      <Route exact path="/register" render={() => <AuthPage authType={'register'} isAuthenticated={auth.isAuthenticated} />} />
-      <Route exact path="/landing" render={() => <Landing />} />
+      <Route exact path="/login/" render={() => <AuthPage authType={'login'} isAuthenticated={auth.isAuthenticated} />} />
+      <Route exact path="/register/" render={() => <AuthPage authType={'register'} isAuthenticated={auth.isAuthenticated} />} />
+      <Route exact path="/landing/" render={() => <Landing />} />
       <Route exact path="/" render={props => <PollsPage  {...props} />} />
       <Route exact path="/poll/:id" render={props => <PollPage getPoll={id => getCurrentPoll(id)} {...props} />} />
       <Route exact path="/create" render={()=> <CreatePollPage isAuthenticated={auth.isAuthenticated}/>} />

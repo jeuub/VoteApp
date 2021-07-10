@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const host = "http://localhost:4000/api";
+const host = "http://courseback.std-1368.ist.mospolytech.ru/api";
 
 export const setToken = token => {
   if (token) {

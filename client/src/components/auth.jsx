@@ -38,7 +38,7 @@ class Auth extends Component {
   render() {
     const { username, password } = this.state;
     return <Fragment>
-      {this.props.authType == 'register' ? <h1> Зарегистрируйтесь</h1> : <h1>Войдите в аккаунт</h1>}
+      {this.props.authType == 'register' ? <h1 className="auth__title"> Зарегистрируйтесь</h1> :this.props.authType == 'admin'? <h1 className="auth__title">Панель администратора</h1>: <h1 className="auth__title">Войдите в аккаунт</h1>}
       <form onSubmit={this.handleSubmit} className="auth__form">
         <label >
           Логин:

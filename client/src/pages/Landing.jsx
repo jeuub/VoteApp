@@ -50,7 +50,7 @@ const Landing = () => {
             Бодур Эййюб  <span><a target="_blank" href="https://github.com/jeuub"><i className="fab fa-github"></i></a>
               <a target="_blank" href="https://vk.com/meowkenn"><i className="fab fa-vk"></i></a></span>
             <br />
-            Команда разработчиков состоит из одного человека, что полностю отвечает за полный путь создания сайта. Проект создан в рамках инженерного проектирования <b> Московского Политхенического Университета.</b>
+            Команда разработчиков состоит из одного человека, что полностю отвечает за полный путь создания сайта. Проект создан в рамках инженерного проектирования <b> Московского Политехнического Университета.</b>
           </p>
           <figure>
             <img src={myAvatar} className="landing__team__content__img" style={{ borderRadius: '50%' }} alt="" />
